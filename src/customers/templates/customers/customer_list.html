@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+
+</style>
+<h1>{{ Customers }}</h1>
+<table>
+	<tr>
+		<th>Customer Name</th>
+		<th>Address</th>
+		<th>City</th>
+		<th>County</th>
+		<th>Postcode</th>
+		<th>Country</th>
+		<th>Phone</th>
+	</tr>
+	{% for object in object_list %}
+		<tr>
+			<td><a href='/customer/{{ object.id }}'> {{ object.name }} </a></td>
+			<td>{{ object.address }}</td>
+			<td>{{ object.city }}</td>
+			<td>{{ object.county }}</td>
+			<td>{{ object.postcode }}</td>
+			<td>{{ object.country }}</td>
+			<td>{{ object.phone }}</td>
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}

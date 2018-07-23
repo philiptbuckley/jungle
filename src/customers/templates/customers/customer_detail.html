@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object.name }}</h1>
+<p>{% if object.address %} {{ object.address }} {% endif %}
+{% if object.city %}, {{ object.city }} {% endif %}
+{% if object.county %}, {{ object.county }} {% endif %}
+{% if object.postcode %}, {{ object.postcode }} {% endif %}
+{% if object.country %}, {{ object.country }} {% endif %}
+</br>
+{{ object.phone }} </br>
+{{ object.notes }}
+</p>
+{% endblock %}
