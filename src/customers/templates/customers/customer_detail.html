@@ -2,13 +2,21 @@
 
 {% block content %}
 <h1>{{ object.name }}</h1>
+<p>{% if object.active %}  &#9745; {% else %} &#9746; {% endif %} Active</p>
+<h3>Address</h3>
 <p>{% if object.address %} {{ object.address }} {% endif %}
-{% if object.city %}, {{ object.city }} {% endif %}
-{% if object.county %}, {{ object.county }} {% endif %}
-{% if object.postcode %}, {{ object.postcode }} {% endif %}
-{% if object.country %}, {{ object.country }} {% endif %}
-</br>
-{{ object.phone }} </br>
+{% if object.city %}</br> {{ object.city }} {% endif %}
+{% if object.county %}</br> {{ object.county }} {% endif %}
+{% if object.postcode %}</br> {{ object.postcode }} {% endif %}
+{% if object.country %}</br> {{ object.country }} {% endif %}
+<h3>Phone</h3>
+{{ object.phone }}
+<h3>Notes</h3>
 {{ object.notes }}
+<hr>
+<p>
+	<a href="../">Back</a>
+	<a href="{{ object.get_absolute_url }}update">Update</a>
+	<a href="{{ object.get_absolute_url }}delete">Delete</a>
 </p>
 {% endblock %}

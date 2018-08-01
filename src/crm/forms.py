@@ -1,10 +1,11 @@
 from django import forms
 
-from .models import Customer
+from .models import Note
 
-class CustomerForm(forms.ModelForm):
+
+class NoteModelForm(forms.ModelForm):
 	# put overrides on default behaviour in here
-	notes = forms.CharField(
+	content = forms.CharField(
 					widget=forms.Textarea(
 							attrs={
 								"placeholder": "Enter customer notes here",
@@ -13,15 +14,7 @@ class CustomerForm(forms.ModelForm):
 						)
 					)
 	class Meta:
-		model = Customer
+		model = Note
 		fields = [
-			'name',
-			'address',
-			'city',
-			'county',
-			'postcode',
-			'country',
-			'phone',
-			'notes',
-			'active'
+			'content'
 		]

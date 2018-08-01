@@ -3,7 +3,7 @@
 {% block content %}
 <style>
 table, th, td {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     border-collapse: collapse;
 }
 th, td {
@@ -21,16 +21,18 @@ th, td {
 		<th>Postcode</th>
 		<th>Country</th>
 		<th>Phone</th>
+		<th>Active</th>
 	</tr>
-	{% for object in object_list %}
+	{% for instance in object_list %}
 		<tr>
-			<td><a href='/customer/{{ object.id }}'> {{ object.name }} </a></td>
-			<td>{{ object.address }}</td>
-			<td>{{ object.city }}</td>
-			<td>{{ object.county }}</td>
-			<td>{{ object.postcode }}</td>
-			<td>{{ object.country }}</td>
-			<td>{{ object.phone }}</td>
+			<td><a href='{{ instance.get_absolute_url }}'> {{ instance.name }} </a></td>
+			<td>{{ instance.address }}</td>
+			<td>{{ instance.city }}</td>
+			<td>{{ instance.county }}</td>
+			<td>{{ instance.postcode }}</td>
+			<td>{{ instance.country }}</td>
+			<td>{{ instance.phone }}</td>
+			<td align="center">{% if instance.active %} &#10004; </td> {% endif %}
 		</tr>
 	{% endfor %}
 </table>
