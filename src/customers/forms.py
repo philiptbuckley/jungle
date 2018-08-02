@@ -1,6 +1,18 @@
 from django import forms
 
-from .models import Customer
+from .models import Customer, Address
+
+class AddressForm(forms.ModelForm):
+	# put overrides on default behaviour in here
+	class Meta:
+		model = Address
+		fields = [
+			'street',
+			'city',
+			'county',
+			'postcode',
+			'country',
+		]
 
 class CustomerForm(forms.ModelForm):
 	# put overrides on default behaviour in here
@@ -16,12 +28,9 @@ class CustomerForm(forms.ModelForm):
 		model = Customer
 		fields = [
 			'name',
-			'address',
-			'city',
-			'county',
-			'postcode',
-			'country',
 			'phone',
+			'address',
+			# 'inv_addr',
 			'notes',
 			'active'
 		]
